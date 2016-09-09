@@ -1,27 +1,20 @@
 # CICS Explorer Access Level Policing
 
-This is a sample program to help ensure that only approved and tested versions of
-CICS Explorer can be used to access a given CICS TS region.
+This is implemented by the use of a sample program which can ensure that only approved
+versions of the CICS Explorer can be used to access a given CICS TS region.
 
-`DFHWBAAX` can be used to compare the user-agent string that Explorer adds to the HTTP
-header against user-specified strings, ensuring that only user-agent strings issued by
-allowed versions of Explorer lead to successful connections.
+A customised version of the sample program `DFHWBAAX` is able to provide this
+functionality.
 
 ## How it works
 
-Firstly, an `EXEC CICS READ HTTPHEADER` command is used to extract the user-agent string
-from the HTTP header that CICS has received. The return code is tested to check that the
-command ran successfully. If it didn't then there isn't a user-agent string in the header
-and the access request didn't come from Explorer, so control is passed to the label
-`MAINLINE` and processing continues normally.
+The customised `DFHWBAAX` program analyses the user-agent string from the HTTP header
+which CICS has received. Each release of Explorer includes a unique user-agent string in
+the HTTP header. The received string is tested against user defined "approved" strings to
+determine whether the connection attempt should be allowed to succeed.
 
-If the `EXEC CICS READ` command is successful, then there exists a user-agent
-string which can be tested using commands that look like this:
-
-    CLC 0(L`SUPEXPL1,R5),SUPEXPL1
-
-Where the user-agent string, addressed by register 5, is tested against the
-string `SUPEXPL1`.
+Any number of "approved" strings can be defined, which enables a flexible policing method
+which can be used with any in-service release of CICS TS.
 
 Further details of this module can be found in the associated [CICSDev article][c].
 
@@ -29,5 +22,4 @@ Further details of this module can be found in the associated [CICSDev article][
 
 This project is licensed under [Apache License Version 2.0](LICENSE).
 
-[github]: https://github.com/cicsdev/cics-explorer-access-level-policing
 [c]: https://developer.ibm.com/cics
