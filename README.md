@@ -22,4 +22,4 @@ Further details of this module can be found in the associated [CICSDev article][
 
 This project is licensed under [Apache License Version 2.0](LICENSE).
 
-[c]: https://developer.ibm.com/cics
+[c]: https://developer.ibm.com/cics/2016/09/12/a-customised-web-analyser-program-to-police-cics-explorer-access-levels
