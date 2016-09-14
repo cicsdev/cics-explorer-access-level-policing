@@ -16,6 +16,10 @@ determine whether the connection attempt should be allowed to succeed.
 Any number of "approved" strings can be defined, which enables a flexible policing method
 which can be used with any in-service release of CICS TS.
 
+Please note that this analyser runs for every CMCI request and may affect the performance
+time of requests. If you are noticing a performance slow-down, remove your custom web
+analyser and check that this is not the cause before raising a PMR with IBM.
+
 Further details of this module can be found in the associated [CICSDev article][c].
 
 ## License

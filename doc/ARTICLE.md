@@ -102,6 +102,9 @@ different analyser for production regions. Which analyser is to be used can be s
 on a TCPIPSERVICE definition, so this is straightforward to tailor to requirements.
 
 Another advantage of using this simple technique is that it is available on all
-in-service releases of CICS TS.
+in-service releases of CICS TS. Please note that this analyser runs for every CMCI
+request and may affect the performance time of requests. If you are noticing a
+performance slow-down, remove your custom web analyser and check that this is not the
+cause before raising a PMR with IBM.
 
 [github]: https://github.com/cicsdev/cics-explorer-access-level-policing
